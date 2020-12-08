@@ -1,0 +1,53 @@
+// DemoOCX.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (DemoOCX.tlb) that will become a resource in
+// DemoOCX.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(02d4cc0d-4702-4bad-8cf9-5f87648a668d), version(1.0),
+  control ]
+library DemoOCXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CDemoOCXCtrl
+	[ 
+		uuid(69ef3342-2d67-42a0-81ae-987c13c3fc9d)
+	]
+	dispinterface _DDemoOCX
+	{
+		properties:
+		methods:
+			[id(1)] LONG ImportImageList(BSTR fullFilePath);
+			[id(2)] LONG ExportImageListToFile(BSTR fullFilePath);
+			[id(3)] void EmptyImageList();
+			[id(4)] void AddTestImages();
+	};
+
+	//  Event dispatch interface for CDemoOCXCtrl
+
+	[ 
+		uuid(f2e2076e-3db1-4ddd-823f-026e7ca17154)
+	]
+	dispinterface _DDemoOCXEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+	};
+
+	//  Class information for CDemoOCXCtrl
+	[
+		uuid(179ab540-078d-44cb-977e-a778973a5161)
+	]
+	coclass DemoOCX
+	{
+		[default] dispinterface _DDemoOCX;
+		[default, source] dispinterface _DDemoOCXEvents;
+	};
+
+};
